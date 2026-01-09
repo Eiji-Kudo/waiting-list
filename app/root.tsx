@@ -14,6 +14,7 @@ import "./app.css";
 const queryClient = new QueryClient();
 
 export const links: Route.LinksFunction = () => [
+	{ rel: "icon", type: "image/svg+xml", href: "/waiting-list/favicon.svg" },
 	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
 	{
 		rel: "preconnect",
