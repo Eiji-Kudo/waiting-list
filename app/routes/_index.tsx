@@ -1,3 +1,4 @@
+import { WaitlistForm } from "~/components/WaitlistForm";
 import type { Route } from "./+types/_index";
 
 export function meta({}: Route.MetaArgs) {
@@ -79,23 +80,15 @@ function Hero() {
 					<br />
 					LINE友だち追加で登録完了。開封率60%以上のLINEで販促まで。
 				</p>
-				<div className="flex flex-col sm:flex-row gap-4 justify-center">
-					<a
-						href="/dashboard"
-						className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors"
-					>
-						無料で始める
-					</a>
+				<WaitlistForm />
+				<div className="mt-4">
 					<a
 						href="/board"
-						className="bg-white hover:bg-gray-50 text-gray-700 px-8 py-4 rounded-xl font-bold text-lg border border-gray-200 transition-colors"
+						className="text-gray-500 hover:text-gray-700 text-sm underline"
 					>
 						掲示板を見る
 					</a>
 				</div>
-				<p className="text-sm text-gray-500 mt-4">
-					初期費用・月額費用なし。使った分だけ。
-				</p>
 			</div>
 		</section>
 	);
@@ -290,17 +283,12 @@ function CTA() {
 		<section className="py-20 px-4 bg-gray-50">
 			<div className="max-w-4xl mx-auto text-center">
 				<h2 className="text-3xl font-bold text-gray-900 mb-4">
-					今すぐ始めよう
+					最新情報を受け取る
 				</h2>
 				<p className="text-gray-600 mb-8">
-					登録者が集まるまで完全無料。リスクなしで始められます。
+					WaitLineのリリース情報やアップデートをお届けします。
 				</p>
-				<a
-					href="/dashboard"
-					className="inline-block bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors"
-				>
-					無料で始める
-				</a>
+				<WaitlistForm />
 			</div>
 		</section>
 	);

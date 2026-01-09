@@ -5,15 +5,51 @@ export function meta({}: Route.MetaArgs) {
 }
 
 const mockSteps = [
-	{ id: 1, name: "ウェルカムメッセージ", timing: "即時", content: "ご登録ありがとうございます！...", active: true },
-	{ id: 2, name: "サービス紹介", timing: "1日後", content: "AI Writing Assistantでできること...", active: true },
-	{ id: 3, name: "特典案内", timing: "3日後", content: "先行登録者限定の特典をご紹介...", active: true },
-	{ id: 4, name: "リマインド", timing: "7日後", content: "ローンチまであと少し！...", active: false },
+	{
+		id: 1,
+		name: "ウェルカムメッセージ",
+		timing: "即時",
+		content: "ご登録ありがとうございます！...",
+		active: true,
+	},
+	{
+		id: 2,
+		name: "サービス紹介",
+		timing: "1日後",
+		content: "AI Writing Assistantでできること...",
+		active: true,
+	},
+	{
+		id: 3,
+		name: "特典案内",
+		timing: "3日後",
+		content: "先行登録者限定の特典をご紹介...",
+		active: true,
+	},
+	{
+		id: 4,
+		name: "リマインド",
+		timing: "7日後",
+		content: "ローンチまであと少し！...",
+		active: false,
+	},
 ];
 
 const mockTriggers = [
-	{ id: 1, name: "登録者数マイルストーン", trigger: "100人達成時", content: "100人突破しました！", active: true },
-	{ id: 2, name: "ローンチカウントダウン", trigger: "2025-03-01 10:00", content: "いよいよ明日ローンチ！", active: false },
+	{
+		id: 1,
+		name: "登録者数マイルストーン",
+		trigger: "100人達成時",
+		content: "100人突破しました！",
+		active: true,
+	},
+	{
+		id: 2,
+		name: "ローンチカウントダウン",
+		trigger: "2025-03-01 10:00",
+		content: "いよいよ明日ローンチ！",
+		active: false,
+	},
 ];
 
 export default function Automation() {
@@ -27,7 +63,10 @@ export default function Automation() {
 			<div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
 				<div className="flex items-center justify-between mb-4">
 					<h2 className="font-bold text-gray-900">ステップ配信</h2>
-					<button type="button" className="text-sm text-green-600 hover:underline">
+					<button
+						type="button"
+						className="text-sm text-green-600 hover:underline"
+					>
 						+ ステップを追加
 					</button>
 				</div>
@@ -57,13 +96,25 @@ export default function Automation() {
 								</div>
 								<div className="flex items-center gap-4">
 									<label className="flex items-center gap-2 cursor-pointer">
-										<input type="checkbox" checked={step.active} readOnly className="w-4 h-4 text-green-500 rounded" />
+										<input
+											type="checkbox"
+											checked={step.active}
+											readOnly
+											className="w-4 h-4 text-green-500 rounded"
+										/>
 										<span className="text-sm text-gray-500">有効</span>
 									</label>
-									<button type="button" className="text-sm text-gray-500 hover:text-gray-700">編集</button>
+									<button
+										type="button"
+										className="text-sm text-gray-500 hover:text-gray-700"
+									>
+										編集
+									</button>
 								</div>
 							</div>
-							<div className="mt-2 ml-12 text-sm text-gray-600 truncate">{step.content}</div>
+							<div className="mt-2 ml-12 text-sm text-gray-600 truncate">
+								{step.content}
+							</div>
 						</div>
 					))}
 				</div>
@@ -72,7 +123,10 @@ export default function Automation() {
 			<div className="bg-white rounded-xl border border-gray-200 p-6">
 				<div className="flex items-center justify-between mb-4">
 					<h2 className="font-bold text-gray-900">条件トリガー配信</h2>
-					<button type="button" className="text-sm text-green-600 hover:underline">
+					<button
+						type="button"
+						className="text-sm text-green-600 hover:underline"
+					>
 						+ トリガーを追加
 					</button>
 				</div>
@@ -88,18 +142,34 @@ export default function Automation() {
 						>
 							<div className="flex items-center justify-between">
 								<div>
-									<div className="font-medium text-gray-900">{trigger.name}</div>
-									<div className="text-sm text-gray-500">トリガー: {trigger.trigger}</div>
+									<div className="font-medium text-gray-900">
+										{trigger.name}
+									</div>
+									<div className="text-sm text-gray-500">
+										トリガー: {trigger.trigger}
+									</div>
 								</div>
 								<div className="flex items-center gap-4">
 									<label className="flex items-center gap-2 cursor-pointer">
-										<input type="checkbox" checked={trigger.active} readOnly className="w-4 h-4 text-green-500 rounded" />
+										<input
+											type="checkbox"
+											checked={trigger.active}
+											readOnly
+											className="w-4 h-4 text-green-500 rounded"
+										/>
 										<span className="text-sm text-gray-500">有効</span>
 									</label>
-									<button type="button" className="text-sm text-gray-500 hover:text-gray-700">編集</button>
+									<button
+										type="button"
+										className="text-sm text-gray-500 hover:text-gray-700"
+									>
+										編集
+									</button>
 								</div>
 							</div>
-							<div className="mt-2 text-sm text-gray-600">{trigger.content}</div>
+							<div className="mt-2 text-sm text-gray-600">
+								{trigger.content}
+							</div>
 						</div>
 					))}
 				</div>

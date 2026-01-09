@@ -101,10 +101,18 @@ export default function Messages() {
 				<table className="w-full">
 					<thead className="bg-gray-50">
 						<tr>
-							<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">内容</th>
-							<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">配信日時</th>
-							<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">配信数</th>
-							<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">状態</th>
+							<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+								内容
+							</th>
+							<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+								配信日時
+							</th>
+							<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+								配信数
+							</th>
+							<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+								状態
+							</th>
 						</tr>
 					</thead>
 					<tbody className="divide-y divide-gray-200">
@@ -114,14 +122,22 @@ export default function Messages() {
 									{message.content}
 								</td>
 								<td className="px-4 py-3 text-sm text-gray-500">
-									{message.status === "scheduled" ? message.scheduledAt : message.sentAt}
+									{message.status === "scheduled"
+										? message.scheduledAt
+										: message.sentAt}
 								</td>
-								<td className="px-4 py-3 text-sm text-gray-500">{message.recipients}人</td>
+								<td className="px-4 py-3 text-sm text-gray-500">
+									{message.recipients}人
+								</td>
 								<td className="px-4 py-3 text-sm">
 									{message.status === "sent" ? (
-										<span className="px-2 py-1 rounded text-xs bg-green-100 text-green-700">配信済み</span>
+										<span className="px-2 py-1 rounded text-xs bg-green-100 text-green-700">
+											配信済み
+										</span>
 									) : (
-										<span className="px-2 py-1 rounded text-xs bg-yellow-100 text-yellow-700">予約中</span>
+										<span className="px-2 py-1 rounded text-xs bg-yellow-100 text-yellow-700">
+											予約中
+										</span>
 									)}
 								</td>
 							</tr>
