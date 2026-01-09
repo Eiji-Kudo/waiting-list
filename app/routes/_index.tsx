@@ -262,12 +262,9 @@ function Pricing() {
 						例: 月1,000通送信（LINE送信料約3,000円）→ 手数料300円
 					</div>
 
-					<a
-						href="/dashboard"
-						className="inline-block bg-white text-green-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-50 transition-colors"
-					>
-						無料で始める
-					</a>
+					<div className="bg-white rounded-xl p-4">
+						<WaitlistForm />
+					</div>
 				</div>
 
 				<div className="mt-8 text-center text-gray-500 text-sm">
