@@ -20,8 +20,8 @@ const mockServices: Record<string, {
 		launchDate: "2025年3月予定",
 		thumbnail: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop",
 		features: [
-			"GPT-4ベースの高精度な文章生成",
-			"日本語に最適化されたモデル",
+			"高精度なAI文章生成",
+			"日本語に最適化",
 			"トーン・スタイルのカスタマイズ",
 			"Chromeエクステンション対応",
 		],
