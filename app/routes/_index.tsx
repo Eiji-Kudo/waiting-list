@@ -333,7 +333,10 @@ function EmbedOptions() {
 
 function Pricing() {
 	return (
-		<section id="pricing" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 bg-white">
+		<section
+			id="pricing"
+			className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 bg-white"
+		>
 			<div className="max-w-4xl mx-auto">
 				<div className="text-center mb-10 sm:mb-16">
 					<h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3 sm:mb-4 tracking-tight">
