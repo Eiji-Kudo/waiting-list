@@ -175,14 +175,11 @@ function Header() {
 					<a href="/board" className="text-green-600 font-medium">
 						掲示板
 					</a>
-					<a href="/login" className="text-gray-600 hover:text-gray-900">
-						ログイン
-					</a>
 					<a
-						href="/signup"
+						href="/dashboard"
 						className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-colors"
 					>
-						無料で始める
+						デモを見る
 					</a>
 				</nav>
 			</div>

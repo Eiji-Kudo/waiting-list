@@ -1,4 +1,4 @@
-import type { Route } from "./+types/home";
+import type { Route } from "./+types/_index";
 
 export function meta({}: Route.MetaArgs) {
 	return [
@@ -50,14 +50,11 @@ function Header() {
 					</a>
 				</nav>
 				<div className="flex items-center gap-4">
-					<a href="/login" className="text-gray-600 hover:text-gray-900">
-						ログイン
-					</a>
 					<a
-						href="/signup"
+						href="/dashboard"
 						className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-colors"
 					>
-						無料で始める
+						デモを見る
 					</a>
 				</div>
 			</div>
@@ -84,7 +81,7 @@ function Hero() {
 				</p>
 				<div className="flex flex-col sm:flex-row gap-4 justify-center">
 					<a
-						href="/signup"
+						href="/dashboard"
 						className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors"
 					>
 						無料で始める
@@ -275,7 +272,7 @@ function Pricing() {
 					</div>
 
 					<a
-						href="/signup"
+						href="/dashboard"
 						className="inline-block bg-white text-green-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-50 transition-colors"
 					>
 						無料で始める
@@ -301,7 +298,7 @@ function CTA() {
 					登録者が集まるまで完全無料。リスクなしで始められます。
 				</p>
 				<a
-					href="/signup"
+					href="/dashboard"
 					className="inline-block bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-colors"
 				>
 					無料で始める
