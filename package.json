@@ -9,16 +9,21 @@
 		"typecheck": "react-router typegen && tsc",
 		"lint": "biome check .",
 		"lint:fix": "biome check --write .",
-		"format": "biome format --write ."
+		"format": "biome format --write .",
+		"ci": "npm run lint && npm run typecheck && npm run build"
 	},
 	"dependencies": {
+		"@hookform/resolvers": "^5.2.2",
+		"@react-router/fs-routes": "^7.12.0",
 		"@react-router/node": "7.12.0",
 		"@react-router/serve": "7.12.0",
 		"@tanstack/react-query": "^5.90.16",
 		"isbot": "^5.1.31",
 		"react": "^19.2.3",
 		"react-dom": "^19.2.3",
-		"react-router": "7.12.0"
+		"react-hook-form": "^7.70.0",
+		"react-router": "7.12.0",
+		"zod": "^4.3.5"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.3.11",
