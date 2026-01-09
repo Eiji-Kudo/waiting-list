@@ -4,171 +4,229 @@ export function meta({}: Route.MetaArgs) {
 	return [{ title: "自動化設定 - WaitLine" }];
 }
 
-const mockSteps = [
-	{
-		id: 1,
-		name: "ウェルカムメッセージ",
-		timing: "即時",
-		content: "ご登録ありがとうございます！...",
-		active: true,
-	},
-	{
-		id: 2,
-		name: "サービス紹介",
-		timing: "1日後",
-		content: "AI Writing Assistantでできること...",
-		active: true,
-	},
-	{
-		id: 3,
-		name: "特典案内",
-		timing: "3日後",
-		content: "先行登録者限定の特典をご紹介...",
-		active: true,
-	},
-	{
-		id: 4,
-		name: "リマインド",
-		timing: "7日後",
-		content: "ローンチまであと少し！...",
-		active: false,
-	},
-];
+function formatDate(date: Date): string {
+	const year = date.getFullYear();
+	const month = String(date.getMonth() + 1).padStart(2, "0");
+	const day = String(date.getDate()).padStart(2, "0");
+	const hours = String(date.getHours()).padStart(2, "0");
+	const minutes = String(date.getMinutes()).padStart(2, "0");
+	return `${year}-${month}-${day} ${hours}:${minutes}`;
+}
 
-const mockTriggers = [
-	{
-		id: 1,
-		name: "登録者数マイルストーン",
-		trigger: "100人達成時",
-		content: "100人突破しました！",
-		active: true,
-	},
-	{
-		id: 2,
-		name: "ローンチカウントダウン",
-		trigger: "2025-03-01 10:00",
-		content: "いよいよ明日ローンチ！",
-		active: false,
-	},
-];
+function addDays(date: Date, days: number): Date {
+	const result = new Date(date);
+	result.setDate(result.getDate() + days);
+	return result;
+}
+
+function getMockData() {
+	const now = new Date();
+	const launchDate = addDays(now, 60);
+	launchDate.setHours(10, 0, 0, 0);
+
+	const mockSteps = [
+		{
+			id: 1,
+			name: "ウェルカムメッセージ",
+			timing: "即時",
+			content:
+				"WaitLineへのご登録ありがとうございます！LINEでウェイティングリストを簡単に作成・管理できるサービスです。ローンチまでお楽しみに！",
+			active: true,
+		},
+		{
+			id: 2,
+			name: "サービス紹介",
+			timing: "1日後",
+			content:
+				"WaitLineでできることをご紹介します。LINE公式アカウントと連携して、先行登録者の管理、自動メッセージ配信、掲示板での露出など、ローンチ前のマーケティングを強力にサポートします。",
+			active: true,
+		},
+		{
+			id: 3,
+			name: "特典案内",
+			timing: "3日後",
+			content:
+				"先行登録者限定の特典をご紹介します！正式リリース時に、Proプランを初年度30%オフでご利用いただけます。この機会をお見逃しなく。",
+			active: true,
+		},
+		{
+			id: 4,
+			name: "リマインド",
+			timing: "7日後",
+			content:
+				"WaitLineのローンチまであと少し！新機能の開発も順調に進んでいます。リリース日が決まり次第、すぐにお知らせしますね。",
+			active: false,
+		},
+	];
+
+	const mockTriggers = [
+		{
+			id: 1,
+			name: "登録者数マイルストーン",
+			trigger: "100人達成時",
+			content:
+				"🎉 100人突破しました！皆さまのご登録に感謝いたします。引き続きWaitLineの開発を進めてまいります。",
+			active: true,
+		},
+		{
+			id: 2,
+			name: "ローンチカウントダウン",
+			trigger: formatDate(launchDate),
+			content:
+				"🚀 いよいよ明日ローンチ！長らくお待たせしました。明日10時より正式サービス開始です。先行登録者特典をお忘れなく！",
+			active: false,
+		},
+	];
+
+	return { mockSteps, mockTriggers };
+}
 
 export default function Automation() {
+	const { mockSteps, mockTriggers } = getMockData();
+
 	return (
 		<>
 			<div className="mb-8">
-				<h1 className="text-2xl font-bold text-gray-900">自動化設定</h1>
-				<p className="text-gray-500">ステップ配信・条件トリガーを設定</p>
+				<h1 className="text-2xl font-bold text-slate-900 tracking-tight">
+					自動化設定
+				</h1>
+				<p className="text-slate-500">ステップ配信・条件トリガーを設定</p>
 			</div>
 
-			<div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
-				<div className="flex items-center justify-between mb-4">
-					<h2 className="font-bold text-gray-900">ステップ配信</h2>
+			<div className="bg-white rounded-2xl border border-slate-200/80 p-6 mb-6 shadow-sm">
+				<div className="flex items-center justify-between mb-6">
+					<div>
+						<h2 className="font-semibold text-slate-900 text-lg">
+							ステップ配信
+						</h2>
+						<p className="text-sm text-slate-500 mt-1">
+							登録からの経過時間に応じて自動でメッセージを配信
+						</p>
+					</div>
 					<button
 						type="button"
-						className="text-sm text-green-600 hover:underline"
+						className="text-sm bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-lg font-medium transition-all shadow-sm"
 					>
 						+ ステップを追加
 					</button>
 				</div>
-				<p className="text-sm text-gray-500 mb-2">
-					登録からの経過時間に応じて自動でメッセージを配信
-				</p>
-				<p className="text-xs text-purple-600 mb-4 flex items-center gap-1">
-					<span>✨</span>
-					各ステップのメッセージはAIで自動生成できます
-				</p>
+				<div className="bg-purple-50/50 border border-purple-100 rounded-xl px-4 py-3 mb-6">
+					<p className="text-sm text-purple-700 flex items-center gap-2">
+						<span>✨</span>
+						各ステップのメッセージはAIで自動生成できます
+					</p>
+				</div>
 
-				<div className="space-y-3">
+				<div className="space-y-4">
 					{mockSteps.map((step, index) => (
 						<div
 							key={step.id}
-							className={`border rounded-lg p-4 ${step.active ? "border-green-200 bg-green-50/50" : "border-gray-200"}`}
+							className={`relative border rounded-xl p-5 transition-all hover:shadow-md ${
+								step.active
+									? "border-slate-200 bg-white shadow-sm"
+									: "border-slate-200 bg-slate-50/50"
+							}`}
 						>
-							<div className="flex items-center justify-between">
-								<div className="flex items-center gap-4">
-									<div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
-										{index + 1}
-									</div>
-									<div>
-										<div className="font-medium text-gray-900">{step.name}</div>
-										<div className="text-sm text-gray-500">{step.timing}</div>
-									</div>
+							{step.active && (
+								<div className="absolute top-4 right-4">
+									<span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">
+										有効
+									</span>
 								</div>
-								<div className="flex items-center gap-4">
-									<label className="flex items-center gap-2 cursor-pointer">
-										<input
-											type="checkbox"
-											checked={step.active}
-											readOnly
-											className="w-4 h-4 text-green-500 rounded"
-										/>
-										<span className="text-sm text-gray-500">有効</span>
-									</label>
-									<button
-										type="button"
-										className="text-sm text-gray-500 hover:text-gray-700"
-									>
-										編集
-									</button>
+							)}
+							{!step.active && (
+								<div className="absolute top-4 right-4">
+									<span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-500">
+										無効
+									</span>
 								</div>
-							</div>
-							<div className="mt-2 ml-12 text-sm text-gray-600 truncate">
-								{step.content}
+							)}
+							<div className="flex items-start gap-4">
+								<div className="w-10 h-10 bg-gradient-to-br from-slate-700 to-slate-900 rounded-xl flex items-center justify-center text-white font-semibold text-sm shadow-sm shrink-0">
+									{index + 1}
+								</div>
+								<div className="flex-1 min-w-0">
+									<div className="flex items-center gap-3">
+										<h3 className="font-medium text-slate-900">{step.name}</h3>
+										<span className="text-xs text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+											{step.timing}
+										</span>
+									</div>
+									<p className="mt-1.5 text-sm text-slate-600 leading-relaxed">
+										{step.content}
+									</p>
+								</div>
+								<button
+									type="button"
+									className="text-sm text-slate-500 hover:text-slate-700 font-medium transition-colors shrink-0"
+								>
+									編集
+								</button>
 							</div>
 						</div>
 					))}
 				</div>
 			</div>
 
-			<div className="bg-white rounded-xl border border-gray-200 p-6">
-				<div className="flex items-center justify-between mb-4">
-					<h2 className="font-bold text-gray-900">条件トリガー配信</h2>
+			<div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
+				<div className="flex items-center justify-between mb-6">
+					<div>
+						<h2 className="font-semibold text-slate-900 text-lg">
+							条件トリガー配信
+						</h2>
+						<p className="text-sm text-slate-500 mt-1">
+							特定の条件を満たした時に自動でメッセージを配信
+						</p>
+					</div>
 					<button
 						type="button"
-						className="text-sm text-green-600 hover:underline"
+						className="text-sm bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-lg font-medium transition-all shadow-sm"
 					>
 						+ トリガーを追加
 					</button>
 				</div>
-				<p className="text-sm text-gray-500 mb-4">
-					特定の条件を満たした時に自動でメッセージを配信
-				</p>
 
-				<div className="space-y-3">
+				<div className="space-y-4">
 					{mockTriggers.map((trigger) => (
 						<div
 							key={trigger.id}
-							className={`border rounded-lg p-4 ${trigger.active ? "border-green-200 bg-green-50/50" : "border-gray-200"}`}
+							className={`relative border rounded-xl p-5 transition-all hover:shadow-md ${
+								trigger.active
+									? "border-slate-200 bg-white shadow-sm"
+									: "border-slate-200 bg-slate-50/50"
+							}`}
 						>
-							<div className="flex items-center justify-between">
-								<div>
-									<div className="font-medium text-gray-900">
-										{trigger.name}
-									</div>
-									<div className="text-sm text-gray-500">
-										トリガー: {trigger.trigger}
-									</div>
+							{trigger.active && (
+								<div className="absolute top-4 right-4">
+									<span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">
+										有効
+									</span>
 								</div>
-								<div className="flex items-center gap-4">
-									<label className="flex items-center gap-2 cursor-pointer">
-										<input
-											type="checkbox"
-											checked={trigger.active}
-											readOnly
-											className="w-4 h-4 text-green-500 rounded"
-										/>
-										<span className="text-sm text-gray-500">有効</span>
-									</label>
-									<button
-										type="button"
-										className="text-sm text-gray-500 hover:text-gray-700"
-									>
-										編集
-									</button>
+							)}
+							{!trigger.active && (
+								<div className="absolute top-4 right-4">
+									<span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-500">
+										無効
+									</span>
 								</div>
-							</div>
-							<div className="mt-2 text-sm text-gray-600">
-								{trigger.content}
+							)}
+							<div className="flex items-start justify-between gap-4">
+								<div className="flex-1 min-w-0">
+									<h3 className="font-medium text-slate-900">{trigger.name}</h3>
+									<p className="mt-1 text-sm text-slate-500">
+										<span className="text-slate-400">トリガー:</span>{" "}
+										{trigger.trigger}
+									</p>
+									<p className="mt-2 text-sm text-slate-600">
+										{trigger.content}
+									</p>
+								</div>
+								<button
+									type="button"
+									className="text-sm text-slate-500 hover:text-slate-700 font-medium transition-colors shrink-0"
+								>
+									編集
+								</button>
 							</div>
 						</div>
 					))}

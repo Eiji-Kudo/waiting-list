@@ -87,35 +87,37 @@ const categories = [
 
 export default function Board() {
 	return (
-		<div className="min-h-screen bg-gray-50">
+		<div className="min-h-screen bg-slate-50">
 			<Header />
-			<main className="max-w-6xl mx-auto px-4 py-8">
-				<div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
+			<main className="max-w-6xl mx-auto px-6 py-10">
+				<div className="bg-amber-50/80 border border-amber-200/60 rounded-xl p-4 mb-8">
 					<p className="text-amber-800 text-sm text-center">
 						これはデモ画面です。実際にサービスを登録すると、ここにあなたのサービスが表示されます。
 					</p>
 				</div>
 
-				<div className="mb-8">
-					<h1 className="text-3xl font-bold text-gray-900 mb-2">掲示板</h1>
-					<p className="text-gray-600">
+				<div className="mb-10">
+					<h1 className="text-3xl font-bold text-slate-900 mb-2 tracking-tight">
+						掲示板
+					</h1>
+					<p className="text-slate-600">
 						新しいサービスを発見して、いち早く登録しよう
 					</p>
 				</div>
 
 				<div className="flex flex-col md:flex-row gap-8">
 					<aside className="md:w-64 shrink-0">
-						<div className="bg-white rounded-xl p-4 border border-gray-200">
-							<h2 className="font-bold text-gray-900 mb-3">カテゴリ</h2>
+						<div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+							<h2 className="font-semibold text-slate-900 mb-4">カテゴリ</h2>
 							<ul className="space-y-1">
 								{categories.map((category) => (
 									<li key={category}>
 										<button
 											type="button"
-											className={`w-full text-left px-3 py-2 rounded-lg text-sm ${
+											className={`w-full text-left px-3 py-2.5 rounded-xl text-sm transition-colors ${
 												category === "すべて"
-													? "bg-green-100 text-green-700 font-medium"
-													: "text-gray-600 hover:bg-gray-100"
+													? "bg-emerald-50 text-emerald-700 font-medium"
+													: "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
 											}`}
 										>
 											{category}
@@ -125,9 +127,9 @@ export default function Board() {
 							</ul>
 						</div>
 
-						<div className="bg-white rounded-xl p-4 border border-gray-200 mt-4">
-							<h2 className="font-bold text-gray-900 mb-3">並び替え</h2>
-							<select className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm">
+						<div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm mt-4">
+							<h2 className="font-semibold text-slate-900 mb-4">並び替え</h2>
+							<select className="w-full border border-slate-200 rounded-xl px-3 py-2.5 text-sm bg-slate-50 text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500">
 								<option>人気順</option>
 								<option>新着順</option>
 								<option>ローンチ日順</option>
@@ -141,30 +143,33 @@ export default function Board() {
 								<a
 									key={service.slug}
 									href={`/service/${service.slug}`}
-									className="bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all"
+									className="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-emerald-300/60 transition-all group"
 								>
-									<div className="aspect-video bg-gray-100 overflow-hidden">
+									<div className="aspect-video bg-slate-100 overflow-hidden">
 										<img
 											src={service.thumbnail}
 											alt={service.name}
-											className="w-full h-full object-cover"
+											className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
 										/>
 									</div>
-									<div className="p-4">
-										<div className="text-xs text-green-600 font-medium mb-1">
+									<div className="p-5">
+										<div className="text-xs text-emerald-600 font-medium mb-2">
 											{service.category}
 										</div>
-										<h3 className="font-bold text-gray-900 mb-2">
+										<h3 className="font-semibold text-slate-900 mb-2">
 											{service.name}
 										</h3>
-										<p className="text-sm text-gray-600 mb-4 line-clamp-2">
+										<p className="text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed">
 											{service.description}
 										</p>
 										<div className="flex items-center justify-between text-sm">
-											<span className="text-gray-500">
-												{service.subscriberCount}人が登録
+											<span className="text-slate-500">
+												<span className="font-medium text-slate-700">
+													{service.subscriberCount}
+												</span>
+												人が登録
 											</span>
-											<span className="text-gray-500">
+											<span className="text-slate-400 text-xs">
 												{service.launchDate}ローンチ予定
 											</span>
 										</div>
@@ -181,21 +186,26 @@ export default function Board() {
 
 function Header() {
 	return (
-		<header className="bg-white border-b border-gray-200">
-			<div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-				<a href="/" className="flex items-center gap-2">
-					<div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+		<header className="bg-white/90 backdrop-blur-md border-b border-slate-200/60">
+			<div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+				<a href="/" className="flex items-center gap-2.5">
+					<div className="w-9 h-9 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-sm">
 						<span className="text-white font-bold text-sm">W</span>
 					</div>
-					<span className="font-bold text-xl text-gray-900">WaitLine</span>
+					<span className="font-bold text-xl tracking-tight text-slate-900">
+						WaitLine
+					</span>
 				</a>
 				<nav className="flex items-center gap-6">
-					<a href="/board" className="text-green-600 font-medium">
+					<a
+						href="/board"
+						className="text-emerald-600 font-medium text-sm transition-colors"
+					>
 						掲示板
 					</a>
 					<a
 						href="/dashboard"
-						className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+						className="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-all shadow-sm hover:shadow"
 					>
 						デモを見る
 					</a>
