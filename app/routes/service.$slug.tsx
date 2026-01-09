@@ -1,24 +1,29 @@
 import type { Route } from "./+types/service.$slug";
 
-const mockServices: Record<string, {
-	name: string;
-	description: string;
-	longDescription: string;
-	category: string;
-	subscriberCount: number;
-	launchDate: string;
-	thumbnail: string;
-	features: string[];
-	operator: string;
-}> = {
+const mockServices: Record<
+	string,
+	{
+		name: string;
+		description: string;
+		longDescription: string;
+		category: string;
+		subscriberCount: number;
+		launchDate: string;
+		thumbnail: string;
+		features: string[];
+		operator: string;
+	}
+> = {
 	"ai-writing-assistant": {
 		name: "AI Writing Assistant",
 		description: "AIがあなたの文章作成をサポート",
-		longDescription: "AI Writing Assistantは、最新のAI技術を活用して、あなたの文章作成を強力にサポートします。ブログ記事、ビジネスメール、SNS投稿など、あらゆるシーンで活躍。文章のトーンや長さも自由自在にカスタマイズできます。",
+		longDescription:
+			"AI Writing Assistantは、最新のAI技術を活用して、あなたの文章作成を強力にサポートします。ブログ記事、ビジネスメール、SNS投稿など、あらゆるシーンで活躍。文章のトーンや長さも自由自在にカスタマイズできます。",
 		category: "テクノロジー / AI",
 		subscriberCount: 234,
 		launchDate: "2025年3月予定",
-		thumbnail: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop",
+		thumbnail:
+			"https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop",
 		features: [
 			"高精度なAI文章生成",
 			"日本語に最適化",
@@ -30,11 +35,13 @@ const mockServices: Record<string, {
 	"eco-marketplace": {
 		name: "エコマーケット",
 		description: "サステナブルな商品だけを集めたマーケットプレイス",
-		longDescription: "環境に優しい商品だけを厳選したマーケットプレイス。すべての商品は環境負荷を考慮して選定されています。買い物を通じて、地球に優しい選択をしませんか？",
+		longDescription:
+			"環境に優しい商品だけを厳選したマーケットプレイス。すべての商品は環境負荷を考慮して選定されています。買い物を通じて、地球に優しい選択をしませんか？",
 		category: "EC / マーケットプレイス",
 		subscriberCount: 189,
 		launchDate: "2025年4月予定",
-		thumbnail: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&h=400&fit=crop",
+		thumbnail:
+			"https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&h=400&fit=crop",
 		features: [
 			"環境認証済み商品のみ取り扱い",
 			"カーボンオフセット配送",
@@ -46,7 +53,10 @@ const mockServices: Record<string, {
 };
 
 export function meta({ params }: Route.MetaArgs) {
-	const service = mockServices[params.slug ?? ""] ?? { name: "サービス", description: "" };
+	const service = mockServices[params.slug ?? ""] ?? {
+		name: "サービス",
+		description: "",
+	};
 	return [
 		{ title: `${service.name} - WaitLine` },
 		{ name: "description", content: service.description },
@@ -60,7 +70,9 @@ export default function ServiceDetail({ params }: Route.ComponentProps) {
 		return (
 			<div className="min-h-screen bg-gray-50 flex items-center justify-center">
 				<div className="text-center">
-					<h1 className="text-2xl font-bold text-gray-900 mb-2">サービスが見つかりません</h1>
+					<h1 className="text-2xl font-bold text-gray-900 mb-2">
+						サービスが見つかりません
+					</h1>
 					<a href="/board" className="text-green-600 hover:underline">
 						掲示板に戻る
 					</a>
@@ -76,7 +88,10 @@ export default function ServiceDetail({ params }: Route.ComponentProps) {
 				<div className="bg-white border-b border-gray-200">
 					<div className="max-w-4xl mx-auto px-4 py-8">
 						<div className="mb-6">
-							<a href="/board" className="text-green-600 hover:underline text-sm">
+							<a
+								href="/board"
+								className="text-green-600 hover:underline text-sm"
+							>
 								← 掲示板に戻る
 							</a>
 						</div>
@@ -97,9 +112,7 @@ export default function ServiceDetail({ params }: Route.ComponentProps) {
 								<h1 className="text-3xl font-bold text-gray-900 mb-4">
 									{service.name}
 								</h1>
-								<p className="text-gray-600 mb-6">
-									{service.longDescription}
-								</p>
+								<p className="text-gray-600 mb-6">{service.longDescription}</p>
 
 								<h2 className="font-bold text-gray-900 mb-3">特徴</h2>
 								<ul className="space-y-2 mb-6">

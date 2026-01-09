@@ -1,9 +1,7 @@
 import type { Route } from "./+types/dashboard";
 
 export function meta({}: Route.MetaArgs) {
-	return [
-		{ title: "ダッシュボード - WaitLine" },
-	];
+	return [{ title: "ダッシュボード - WaitLine" }];
 }
 
 const mockStats = {
@@ -15,11 +13,36 @@ const mockStats = {
 };
 
 const mockSubscribers = [
-	{ id: 1, name: "田中 太郎", registeredAt: "2025-01-09 14:23", position: 1, referralCount: 5 },
-	{ id: 2, name: "山田 花子", registeredAt: "2025-01-09 12:15", position: 2, referralCount: 3 },
-	{ id: 3, name: "佐藤 一郎", registeredAt: "2025-01-08 18:42", position: 3, referralCount: 2 },
-	{ id: 4, name: "鈴木 美咲", registeredAt: "2025-01-08 10:30", position: 4, referralCount: 1 },
-	{ id: 5, name: "高橋 健二", registeredAt: "2025-01-07 09:15", position: 5, referralCount: 0 },
+	{
+		id: 1,
+		name: "田中 太郎",
+		registeredAt: "2025-01-09 14:23",
+		source: "掲示板",
+	},
+	{
+		id: 2,
+		name: "山田 花子",
+		registeredAt: "2025-01-09 12:15",
+		source: "掲示板",
+	},
+	{
+		id: 3,
+		name: "佐藤 一郎",
+		registeredAt: "2025-01-08 18:42",
+		source: "直接",
+	},
+	{
+		id: 4,
+		name: "鈴木 美咲",
+		registeredAt: "2025-01-08 10:30",
+		source: "掲示板",
+	},
+	{
+		id: 5,
+		name: "高橋 健二",
+		registeredAt: "2025-01-07 09:15",
+		source: "直接",
+	},
 ];
 
 export default function Dashboard() {
@@ -72,16 +95,13 @@ export default function Dashboard() {
 							<thead className="bg-gray-50">
 								<tr>
 									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
-										順位
-									</th>
-									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
 										名前
 									</th>
 									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
 										登録日時
 									</th>
 									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
-										紹介数
+										流入元
 									</th>
 								</tr>
 							</thead>
@@ -89,16 +109,21 @@ export default function Dashboard() {
 								{mockSubscribers.map((subscriber) => (
 									<tr key={subscriber.id} className="hover:bg-gray-50">
 										<td className="px-4 py-3 text-sm text-gray-900">
-											#{subscriber.position}
-										</td>
-										<td className="px-4 py-3 text-sm text-gray-900">
 											{subscriber.name}
 										</td>
 										<td className="px-4 py-3 text-sm text-gray-500">
 											{subscriber.registeredAt}
 										</td>
-										<td className="px-4 py-3 text-sm text-gray-500">
-											{subscriber.referralCount}人
+										<td className="px-4 py-3 text-sm">
+											<span
+												className={`px-2 py-1 rounded text-xs ${
+													subscriber.source === "掲示板"
+														? "bg-blue-100 text-blue-700"
+														: "bg-gray-100 text-gray-700"
+												}`}
+											>
+												{subscriber.source}
+											</span>
 										</td>
 									</tr>
 								))}
@@ -128,9 +153,7 @@ function StatCard({
 			<div className="flex items-end gap-2">
 				<span className="text-3xl font-bold text-gray-900">{value}</span>
 				<span className="text-gray-500 mb-1">{suffix}</span>
-				{trend && (
-					<span className="text-green-500 text-sm mb-1">{trend}</span>
-				)}
+				{trend && <span className="text-green-500 text-sm mb-1">{trend}</span>}
 			</div>
 		</div>
 	);

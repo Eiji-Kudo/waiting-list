@@ -5,9 +5,27 @@ export function meta({}: Route.MetaArgs) {
 }
 
 const mockMessages = [
-	{ id: 1, content: "サービスローンチまであと1週間！お楽しみに...", sentAt: "2025-01-09 10:00", recipients: 234, status: "sent" },
-	{ id: 2, content: "新機能のお知らせ：AIアシスタント機能を追加...", sentAt: "2025-01-07 14:30", recipients: 220, status: "sent" },
-	{ id: 3, content: "【先行登録者限定】特別割引のご案内", scheduledAt: "2025-01-15 10:00", recipients: 250, status: "scheduled" },
+	{
+		id: 1,
+		content: "サービスローンチまであと1週間！お楽しみに...",
+		sentAt: "2025-01-09 10:00",
+		recipients: 234,
+		status: "sent",
+	},
+	{
+		id: 2,
+		content: "新機能のお知らせ：AIアシスタント機能を追加...",
+		sentAt: "2025-01-07 14:30",
+		recipients: 220,
+		status: "sent",
+	},
+	{
+		id: 3,
+		content: "【先行登録者限定】特別割引のご案内",
+		scheduledAt: "2025-01-15 10:00",
+		recipients: 250,
+		status: "scheduled",
+	},
 ];
 
 export default function Messages() {
@@ -19,7 +37,9 @@ export default function Messages() {
 				<main className="flex-1 p-8">
 					<div className="flex items-center justify-between mb-8">
 						<div>
-							<h1 className="text-2xl font-bold text-gray-900">メッセージ配信</h1>
+							<h1 className="text-2xl font-bold text-gray-900">
+								メッセージ配信
+							</h1>
 							<p className="text-gray-500">登録者へのメッセージを配信</p>
 						</div>
 						<button
@@ -33,24 +53,24 @@ export default function Messages() {
 					<div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
 						<h2 className="font-bold text-gray-900 mb-4">新規メッセージ</h2>
 						<div className="space-y-4">
-							<div>
-								<label className="block text-sm font-medium text-gray-700 mb-1">
+							<label className="block">
+								<span className="block text-sm font-medium text-gray-700 mb-1">
 									配信対象
-								</label>
+								</span>
 								<select className="w-full border border-gray-200 rounded-lg px-4 py-2">
 									<option>全員（234人）</option>
 									<option>上位100人</option>
 								</select>
-							</div>
-							<div>
-								<label className="block text-sm font-medium text-gray-700 mb-1">
+							</label>
+							<label className="block">
+								<span className="block text-sm font-medium text-gray-700 mb-1">
 									メッセージ内容
-								</label>
+								</span>
 								<textarea
 									className="w-full border border-gray-200 rounded-lg px-4 py-3 h-32 resize-none"
 									placeholder="メッセージを入力..."
 								/>
-							</div>
+							</label>
 							<div className="flex items-center gap-4">
 								<button
 									type="button"
@@ -75,10 +95,18 @@ export default function Messages() {
 						<table className="w-full">
 							<thead className="bg-gray-50">
 								<tr>
-									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">内容</th>
-									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">配信日時</th>
-									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">配信数</th>
-									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">状態</th>
+									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+										内容
+									</th>
+									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+										配信日時
+									</th>
+									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+										配信数
+									</th>
+									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+										状態
+									</th>
 								</tr>
 							</thead>
 							<tbody className="divide-y divide-gray-200">
@@ -88,14 +116,22 @@ export default function Messages() {
 											{message.content}
 										</td>
 										<td className="px-4 py-3 text-sm text-gray-500">
-											{message.status === "scheduled" ? message.scheduledAt : message.sentAt}
+											{message.status === "scheduled"
+												? message.scheduledAt
+												: message.sentAt}
 										</td>
-										<td className="px-4 py-3 text-sm text-gray-500">{message.recipients}人</td>
+										<td className="px-4 py-3 text-sm text-gray-500">
+											{message.recipients}人
+										</td>
 										<td className="px-4 py-3 text-sm">
 											{message.status === "sent" ? (
-												<span className="px-2 py-1 rounded text-xs bg-green-100 text-green-700">配信済み</span>
+												<span className="px-2 py-1 rounded text-xs bg-green-100 text-green-700">
+													配信済み
+												</span>
 											) : (
-												<span className="px-2 py-1 rounded text-xs bg-yellow-100 text-yellow-700">予約中</span>
+												<span className="px-2 py-1 rounded text-xs bg-yellow-100 text-yellow-700">
+													予約中
+												</span>
 											)}
 										</td>
 									</tr>
@@ -121,7 +157,12 @@ function DashboardHeader() {
 				</a>
 				<div className="flex items-center gap-4">
 					<span className="text-sm text-gray-500">demo@example.com</span>
-					<button type="button" className="text-sm text-gray-600 hover:text-gray-900">ログアウト</button>
+					<button
+						type="button"
+						className="text-sm text-gray-600 hover:text-gray-900"
+					>
+						ログアウト
+					</button>
 				</div>
 			</div>
 		</header>

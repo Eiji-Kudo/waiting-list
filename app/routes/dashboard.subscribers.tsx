@@ -5,14 +5,62 @@ export function meta({}: Route.MetaArgs) {
 }
 
 const mockSubscribers = [
-	{ id: 1, name: "田中 太郎", registeredAt: "2025-01-09 14:23", source: "掲示板", blocked: false },
-	{ id: 2, name: "山田 花子", registeredAt: "2025-01-09 12:15", source: "掲示板", blocked: false },
-	{ id: 3, name: "佐藤 一郎", registeredAt: "2025-01-08 18:42", source: "直接", blocked: false },
-	{ id: 4, name: "鈴木 美咲", registeredAt: "2025-01-08 10:30", source: "掲示板", blocked: false },
-	{ id: 5, name: "高橋 健二", registeredAt: "2025-01-07 09:15", source: "直接", blocked: false },
-	{ id: 6, name: "伊藤 裕子", registeredAt: "2025-01-06 16:30", source: "直接", blocked: true },
-	{ id: 7, name: "渡辺 大輔", registeredAt: "2025-01-05 11:20", source: "掲示板", blocked: false },
-	{ id: 8, name: "小林 さくら", registeredAt: "2025-01-04 09:45", source: "直接", blocked: false },
+	{
+		id: 1,
+		name: "田中 太郎",
+		registeredAt: "2025-01-09 14:23",
+		source: "掲示板",
+		blocked: false,
+	},
+	{
+		id: 2,
+		name: "山田 花子",
+		registeredAt: "2025-01-09 12:15",
+		source: "掲示板",
+		blocked: false,
+	},
+	{
+		id: 3,
+		name: "佐藤 一郎",
+		registeredAt: "2025-01-08 18:42",
+		source: "直接",
+		blocked: false,
+	},
+	{
+		id: 4,
+		name: "鈴木 美咲",
+		registeredAt: "2025-01-08 10:30",
+		source: "掲示板",
+		blocked: false,
+	},
+	{
+		id: 5,
+		name: "高橋 健二",
+		registeredAt: "2025-01-07 09:15",
+		source: "直接",
+		blocked: false,
+	},
+	{
+		id: 6,
+		name: "伊藤 裕子",
+		registeredAt: "2025-01-06 16:30",
+		source: "直接",
+		blocked: true,
+	},
+	{
+		id: 7,
+		name: "渡辺 大輔",
+		registeredAt: "2025-01-05 11:20",
+		source: "掲示板",
+		blocked: false,
+	},
+	{
+		id: 8,
+		name: "小林 さくら",
+		registeredAt: "2025-01-04 09:45",
+		source: "直接",
+		blocked: false,
+	},
 ];
 
 export default function Subscribers() {
@@ -56,30 +104,49 @@ export default function Subscribers() {
 						<table className="w-full">
 							<thead className="bg-gray-50">
 								<tr>
-									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">名前</th>
-									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">登録日時</th>
-									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">流入元</th>
-									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">状態</th>
+									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+										名前
+									</th>
+									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+										登録日時
+									</th>
+									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+										流入元
+									</th>
+									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
+										状態
+									</th>
 								</tr>
 							</thead>
 							<tbody className="divide-y divide-gray-200">
 								{mockSubscribers.map((subscriber) => (
 									<tr key={subscriber.id} className="hover:bg-gray-50">
-										<td className="px-4 py-3 text-sm text-gray-900">{subscriber.name}</td>
-										<td className="px-4 py-3 text-sm text-gray-500">{subscriber.registeredAt}</td>
+										<td className="px-4 py-3 text-sm text-gray-900">
+											{subscriber.name}
+										</td>
+										<td className="px-4 py-3 text-sm text-gray-500">
+											{subscriber.registeredAt}
+										</td>
 										<td className="px-4 py-3 text-sm">
-											<span className={`px-2 py-1 rounded text-xs ${
-												subscriber.source === "掲示板" ? "bg-blue-100 text-blue-700" :
-												"bg-gray-100 text-gray-700"
-											}`}>
+											<span
+												className={`px-2 py-1 rounded text-xs ${
+													subscriber.source === "掲示板"
+														? "bg-blue-100 text-blue-700"
+														: "bg-gray-100 text-gray-700"
+												}`}
+											>
 												{subscriber.source}
 											</span>
 										</td>
 										<td className="px-4 py-3 text-sm">
 											{subscriber.blocked ? (
-												<span className="px-2 py-1 rounded text-xs bg-red-100 text-red-700">ブロック</span>
+												<span className="px-2 py-1 rounded text-xs bg-red-100 text-red-700">
+													ブロック
+												</span>
 											) : (
-												<span className="px-2 py-1 rounded text-xs bg-green-100 text-green-700">アクティブ</span>
+												<span className="px-2 py-1 rounded text-xs bg-green-100 text-green-700">
+													アクティブ
+												</span>
 											)}
 										</td>
 									</tr>
@@ -91,8 +158,20 @@ export default function Subscribers() {
 					<div className="flex items-center justify-between text-sm text-gray-500">
 						<span>1-8 / 8件</span>
 						<div className="flex gap-2">
-							<button type="button" className="px-3 py-1 border border-gray-200 rounded hover:bg-gray-50" disabled>前へ</button>
-							<button type="button" className="px-3 py-1 border border-gray-200 rounded hover:bg-gray-50" disabled>次へ</button>
+							<button
+								type="button"
+								className="px-3 py-1 border border-gray-200 rounded hover:bg-gray-50"
+								disabled
+							>
+								前へ
+							</button>
+							<button
+								type="button"
+								className="px-3 py-1 border border-gray-200 rounded hover:bg-gray-50"
+								disabled
+							>
+								次へ
+							</button>
 						</div>
 					</div>
 				</main>
@@ -113,7 +192,12 @@ function DashboardHeader() {
 				</a>
 				<div className="flex items-center gap-4">
 					<span className="text-sm text-gray-500">demo@example.com</span>
-					<button type="button" className="text-sm text-gray-600 hover:text-gray-900">ログアウト</button>
+					<button
+						type="button"
+						className="text-sm text-gray-600 hover:text-gray-900"
+					>
+						ログアウト
+					</button>
 				</div>
 			</div>
 		</header>

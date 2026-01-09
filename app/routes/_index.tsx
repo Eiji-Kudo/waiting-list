@@ -124,8 +124,7 @@ function Features() {
 		{
 			icon: "📊",
 			title: "分析機能",
-			description:
-				"登録者数の推移、流入元などをダッシュボードで簡単に確認。",
+			description: "登録者数の推移、流入元などをダッシュボードで簡単に確認。",
 		},
 		{
 			icon: "📋",
@@ -181,8 +180,7 @@ function HowItWorks() {
 		{
 			step: "2",
 			title: "ユーザーが登録",
-			description:
-				"掲示板やあなたのSNSからユーザーがLINE友だち追加で登録。",
+			description: "掲示板やあなたのSNSからユーザーがLINE友だち追加で登録。",
 		},
 		{
 			step: "3",

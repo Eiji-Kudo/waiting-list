@@ -20,39 +20,39 @@ export default function Settings() {
 						<div className="bg-white rounded-xl border border-gray-200 p-6">
 							<h2 className="font-bold text-gray-900 mb-4">サービス基本情報</h2>
 							<div className="space-y-4">
-								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+								<label className="block">
+									<span className="block text-sm font-medium text-gray-700 mb-1">
 										サービス名
-									</label>
+									</span>
 									<input
 										type="text"
 										defaultValue="AI Writing Assistant"
 										className="w-full border border-gray-200 rounded-lg px-4 py-2"
 									/>
-								</div>
-								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+								</label>
+								<label className="block">
+									<span className="block text-sm font-medium text-gray-700 mb-1">
 										短い説明
-									</label>
+									</span>
 									<input
 										type="text"
 										defaultValue="AIがあなたの文章作成をサポート"
 										className="w-full border border-gray-200 rounded-lg px-4 py-2"
 									/>
-								</div>
-								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+								</label>
+								<label className="block">
+									<span className="block text-sm font-medium text-gray-700 mb-1">
 										詳細説明
-									</label>
+									</span>
 									<textarea
 										defaultValue="AI Writing Assistantは、最新のAI技術を活用して、あなたの文章作成を強力にサポートします。"
 										className="w-full border border-gray-200 rounded-lg px-4 py-3 h-24 resize-none"
 									/>
-								</div>
-								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+								</label>
+								<label className="block">
+									<span className="block text-sm font-medium text-gray-700 mb-1">
 										カテゴリ
-									</label>
+									</span>
 									<select className="w-full border border-gray-200 rounded-lg px-4 py-2">
 										<option>テクノロジー / AI</option>
 										<option>EC / マーケットプレイス</option>
@@ -62,55 +62,60 @@ export default function Settings() {
 										<option>教育</option>
 										<option>ライフスタイル</option>
 									</select>
-								</div>
-								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+								</label>
+								<label className="block">
+									<span className="block text-sm font-medium text-gray-700 mb-1">
 										ローンチ予定日
-									</label>
+									</span>
 									<input
 										type="date"
 										defaultValue="2025-03-01"
 										className="w-full border border-gray-200 rounded-lg px-4 py-2"
 									/>
-								</div>
+								</label>
 							</div>
 						</div>
 
 						<div className="bg-white rounded-xl border border-gray-200 p-6">
-							<h2 className="font-bold text-gray-900 mb-4">LINE公式アカウント連携</h2>
+							<h2 className="font-bold text-gray-900 mb-4">
+								LINE公式アカウント連携
+							</h2>
 							<div className="space-y-4">
-								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+								<label className="block">
+									<span className="block text-sm font-medium text-gray-700 mb-1">
 										チャネルID
-									</label>
+									</span>
 									<input
 										type="text"
 										placeholder="1234567890"
 										className="w-full border border-gray-200 rounded-lg px-4 py-2"
 									/>
-								</div>
-								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+								</label>
+								<label className="block">
+									<span className="block text-sm font-medium text-gray-700 mb-1">
 										チャネルシークレット
-									</label>
+									</span>
 									<input
 										type="password"
 										placeholder="••••••••••••••••"
 										className="w-full border border-gray-200 rounded-lg px-4 py-2"
 									/>
-								</div>
-								<div>
-									<label className="block text-sm font-medium text-gray-700 mb-1">
+								</label>
+								<label className="block">
+									<span className="block text-sm font-medium text-gray-700 mb-1">
 										アクセストークン
-									</label>
+									</span>
 									<input
 										type="password"
 										placeholder="••••••••••••••••"
 										className="w-full border border-gray-200 rounded-lg px-4 py-2"
 									/>
-								</div>
+								</label>
 								<div className="text-sm text-gray-500">
-									Webhook URL: <code className="bg-gray-100 px-2 py-1 rounded">https://waitline.app/api/webhook/xxx</code>
+									Webhook URL:{" "}
+									<code className="bg-gray-100 px-2 py-1 rounded">
+										https://waitline.app/api/webhook/xxx
+									</code>
 								</div>
 							</div>
 						</div>
@@ -125,8 +130,12 @@ export default function Settings() {
 										className="w-4 h-4 text-green-500 rounded"
 									/>
 									<div>
-										<div className="font-medium text-gray-900">サービスを公開</div>
-										<div className="text-sm text-gray-500">公開するとユーザーがLINE登録できるようになります</div>
+										<div className="font-medium text-gray-900">
+											サービスを公開
+										</div>
+										<div className="text-sm text-gray-500">
+											公開するとユーザーがLINE登録できるようになります
+										</div>
 									</div>
 								</label>
 								<label className="flex items-center gap-3 cursor-pointer">
@@ -136,15 +145,21 @@ export default function Settings() {
 										className="w-4 h-4 text-green-500 rounded"
 									/>
 									<div>
-										<div className="font-medium text-gray-900">掲示板に掲載</div>
-										<div className="text-sm text-gray-500">WaitLineの掲示板にサービスが表示されます</div>
+										<div className="font-medium text-gray-900">
+											掲示板に掲載
+										</div>
+										<div className="text-sm text-gray-500">
+											WaitLineの掲示板にサービスが表示されます
+										</div>
 									</div>
 								</label>
 							</div>
 						</div>
 
 						<div className="bg-white rounded-xl border border-gray-200 p-6">
-							<h2 className="font-bold text-gray-900 mb-4">ウェルカムメッセージ</h2>
+							<h2 className="font-bold text-gray-900 mb-4">
+								ウェルカムメッセージ
+							</h2>
 							<div>
 								<textarea
 									defaultValue="ご登録ありがとうございます！AI Writing Assistantの最新情報をお届けします。ローンチまでお楽しみに！"
@@ -183,7 +198,12 @@ function DashboardHeader() {
 				</a>
 				<div className="flex items-center gap-4">
 					<span className="text-sm text-gray-500">demo@example.com</span>
-					<button type="button" className="text-sm text-gray-600 hover:text-gray-900">ログアウト</button>
+					<button
+						type="button"
+						className="text-sm text-gray-600 hover:text-gray-900"
+					>
+						ログアウト
+					</button>
 				</div>
 			</div>
 		</header>
