@@ -14,7 +14,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
 	return (
-		<div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
+		<div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50">
 			<Header />
 			<Hero />
 			<Features />
@@ -28,32 +28,46 @@ export default function Home() {
 
 function Header() {
 	return (
-		<header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm border-b border-gray-100 z-50">
-			<div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-				<div className="flex items-center gap-2">
-					<div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
+		<header className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-slate-200/60 z-50">
+			<div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+				<div className="flex items-center gap-2.5">
+					<div className="w-9 h-9 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-sm">
 						<span className="text-white font-bold text-sm">W</span>
 					</div>
-					<span className="font-bold text-xl text-gray-900">WaitLine</span>
+					<span className="font-bold text-xl tracking-tight text-slate-900">
+						WaitLine
+					</span>
 				</div>
 				<nav className="hidden md:flex items-center gap-8">
-					<a href="#features" className="text-gray-600 hover:text-gray-900">
+					<a
+						href="#features"
+						className="text-slate-600 hover:text-slate-900 text-sm font-medium transition-colors"
+					>
 						特徴
 					</a>
-					<a href="#how-it-works" className="text-gray-600 hover:text-gray-900">
+					<a
+						href="#how-it-works"
+						className="text-slate-600 hover:text-slate-900 text-sm font-medium transition-colors"
+					>
 						使い方
 					</a>
-					<a href="#pricing" className="text-gray-600 hover:text-gray-900">
+					<a
+						href="#pricing"
+						className="text-slate-600 hover:text-slate-900 text-sm font-medium transition-colors"
+					>
 						料金
 					</a>
-					<a href="/board" className="text-gray-600 hover:text-gray-900">
+					<a
+						href="/board"
+						className="text-slate-600 hover:text-slate-900 text-sm font-medium transition-colors"
+					>
 						掲示板
 					</a>
 				</nav>
 				<div className="flex items-center gap-4">
 					<a
 						href="/dashboard"
-						className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+						className="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-all shadow-sm hover:shadow"
 					>
 						デモを見る
 					</a>
@@ -65,28 +79,31 @@ function Header() {
 
 function Hero() {
 	return (
-		<section className="pt-32 pb-20 px-4">
+		<section className="pt-36 pb-24 px-6">
 			<div className="max-w-4xl mx-auto text-center">
-				<div className="inline-block bg-green-100 text-green-700 px-4 py-1 rounded-full text-sm font-medium mb-6">
+				<div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200/60 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium mb-8">
+					<span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
 					日本初 LINE特化のウェイティングリスト
 				</div>
-				<h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+				<h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 leading-[1.1] tracking-tight">
 					LINEで集める、
 					<br />
-					LINEで届ける
+					<span className="bg-gradient-to-r from-emerald-600 to-emerald-500 bg-clip-text text-transparent">
+						LINEで届ける
+					</span>
 				</h1>
-				<p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+				<p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
 					新サービスのローンチ前にユーザーを集めよう。
 					<br />
 					LINE友だち追加で登録完了。開封率60%以上のLINEで販促まで。
 				</p>
 				<WaitlistForm />
-				<div className="mt-4">
+				<div className="mt-6">
 					<a
 						href="/board"
-						className="text-gray-500 hover:text-gray-700 text-sm underline"
+						className="text-slate-500 hover:text-slate-700 text-sm font-medium transition-colors"
 					>
-						掲示板を見る
+						掲示板を見る →
 					</a>
 				</div>
 			</div>
@@ -262,9 +279,7 @@ function Pricing() {
 						例: 月1,000通送信（LINE送信料約3,000円）→ 手数料300円
 					</div>
 
-					<div className="bg-white rounded-xl p-4">
-						<WaitlistForm />
-					</div>
+					<WaitlistForm variant="dark" />
 				</div>
 
 				<div className="mt-8 text-center text-gray-500 text-sm">
