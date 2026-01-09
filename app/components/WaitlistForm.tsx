@@ -63,19 +63,21 @@ export function WaitlistForm({ variant = "light" }: Props) {
 	if (mutation.isSuccess) {
 		return (
 			<div
-				className={`rounded-2xl p-8 text-center ${
+				className={`rounded-xl sm:rounded-2xl p-5 sm:p-8 text-center ${
 					isDark
 						? "bg-white/20 backdrop-blur border border-white/30"
 						: "bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200"
 				}`}
 			>
-				<div className="text-4xl mb-3">🎉</div>
+				<div className="text-3xl sm:text-4xl mb-2 sm:mb-3">🎉</div>
 				<p
-					className={`text-xl font-bold mb-2 ${isDark ? "text-white" : "text-green-800"}`}
+					className={`text-lg sm:text-xl font-bold mb-1 sm:mb-2 ${isDark ? "text-white" : "text-green-800"}`}
 				>
 					登録完了！
 				</p>
-				<p className={`${isDark ? "text-white/80" : "text-green-600"}`}>
+				<p
+					className={`text-sm sm:text-base ${isDark ? "text-white/80" : "text-green-600"}`}
+				>
 					リリース時にお知らせします。お楽しみに！
 				</p>
 			</div>
@@ -86,7 +88,7 @@ export function WaitlistForm({ variant = "light" }: Props) {
 		<div className="w-full max-w-lg mx-auto">
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div
-					className={`flex flex-col sm:flex-row gap-2 p-2 rounded-2xl ${
+					className={`flex flex-col sm:flex-row gap-2 p-1.5 sm:p-2 rounded-xl sm:rounded-2xl ${
 						isDark
 							? "bg-white/10 backdrop-blur border border-white/20"
 							: "bg-white shadow-xl border border-gray-100"
@@ -97,7 +99,7 @@ export function WaitlistForm({ variant = "light" }: Props) {
 							type="email"
 							{...register("email")}
 							placeholder="メールアドレス"
-							className={`w-full px-5 py-4 rounded-xl text-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+							className={`w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg sm:rounded-xl text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
 								isDark
 									? "bg-white text-gray-900 placeholder-gray-400"
 									: "bg-gray-50 text-gray-900 placeholder-gray-400"
@@ -107,7 +109,7 @@ export function WaitlistForm({ variant = "light" }: Props) {
 					<button
 						type="submit"
 						disabled={mutation.isPending}
-						className={`px-8 py-4 rounded-xl font-bold text-lg transition-all ${
+						className={`px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-lg transition-all ${
 							isDark
 								? "bg-white text-green-600 hover:bg-green-50 hover:scale-105 disabled:bg-gray-200 disabled:scale-100"
 								: "bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:from-green-600 hover:to-emerald-600 hover:scale-105 hover:shadow-lg disabled:from-green-300 disabled:to-emerald-300 disabled:scale-100"
@@ -118,14 +120,14 @@ export function WaitlistForm({ variant = "light" }: Props) {
 				</div>
 				{errors.email && (
 					<p
-						className={`text-sm mt-3 text-center ${isDark ? "text-red-200" : "text-red-500"}`}
+						className={`text-xs sm:text-sm mt-2 sm:mt-3 text-center ${isDark ? "text-red-200" : "text-red-500"}`}
 					>
 						{errors.email.message}
 					</p>
 				)}
 				{mutation.isError && (
 					<p
-						className={`text-sm mt-3 text-center ${isDark ? "text-red-200" : "text-red-500"}`}
+						className={`text-xs sm:text-sm mt-2 sm:mt-3 text-center ${isDark ? "text-red-200" : "text-red-500"}`}
 					>
 						{mutation.error.message}
 					</p>

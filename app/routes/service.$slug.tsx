@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import type { Route } from "./+types/service.$slug";
 
 const mockServices: Record<
@@ -73,9 +74,9 @@ export default function ServiceDetail({ params }: Route.ComponentProps) {
 					<h1 className="text-2xl font-bold text-gray-900 mb-2">
 						サービスが見つかりません
 					</h1>
-					<a href="/board" className="text-green-600 hover:underline">
+					<Link to="/board" className="text-green-600 hover:underline">
 						掲示板に戻る
-					</a>
+					</Link>
 				</div>
 			</div>
 		);
@@ -88,12 +89,12 @@ export default function ServiceDetail({ params }: Route.ComponentProps) {
 				<div className="bg-white border-b border-gray-200">
 					<div className="max-w-4xl mx-auto px-4 py-8">
 						<div className="mb-6">
-							<a
-								href="/board"
+							<Link
+								to="/board"
 								className="text-green-600 hover:underline text-sm"
 							>
 								← 掲示板に戻る
-							</a>
+							</Link>
 						</div>
 
 						<div className="aspect-video rounded-2xl overflow-hidden mb-8 bg-gray-100">
@@ -176,22 +177,22 @@ function Header() {
 	return (
 		<header className="bg-white border-b border-gray-200">
 			<div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-				<a href="/" className="flex items-center gap-2">
+				<Link to="/" className="flex items-center gap-2">
 					<div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
 						<span className="text-white font-bold text-sm">W</span>
 					</div>
 					<span className="font-bold text-xl text-gray-900">WaitLine</span>
-				</a>
+				</Link>
 				<nav className="flex items-center gap-6">
-					<a href="/board" className="text-gray-600 hover:text-gray-900">
+					<Link to="/board" className="text-gray-600 hover:text-gray-900">
 						掲示板
-					</a>
-					<a
-						href="/dashboard"
+					</Link>
+					<Link
+						to="/dashboard"
 						className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition-colors"
 					>
 						デモを見る
-					</a>
+					</Link>
 				</nav>
 			</div>
 		</header>

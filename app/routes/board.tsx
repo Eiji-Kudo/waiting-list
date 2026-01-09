@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import type { Route } from "./+types/board";
 
 export function meta({}: Route.MetaArgs) {
@@ -140,9 +141,9 @@ export default function Board() {
 					<div className="flex-1">
 						<div className="grid md:grid-cols-2 gap-6">
 							{mockServices.map((service) => (
-								<a
+								<Link
 									key={service.slug}
-									href={`/service/${service.slug}`}
+									to={`/service/${service.slug}`}
 									className="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-lg hover:border-emerald-300/60 transition-all group"
 								>
 									<div className="aspect-video bg-slate-100 overflow-hidden">
@@ -174,7 +175,7 @@ export default function Board() {
 											</span>
 										</div>
 									</div>
-								</a>
+								</Link>
 							))}
 						</div>
 					</div>
@@ -188,27 +189,27 @@ function Header() {
 	return (
 		<header className="bg-white/90 backdrop-blur-md border-b border-slate-200/60">
 			<div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-				<a href="/" className="flex items-center gap-2.5">
+				<Link to="/" className="flex items-center gap-2.5">
 					<div className="w-9 h-9 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-sm">
 						<span className="text-white font-bold text-sm">W</span>
 					</div>
 					<span className="font-bold text-xl tracking-tight text-slate-900">
 						WaitLine
 					</span>
-				</a>
+				</Link>
 				<nav className="flex items-center gap-6">
-					<a
-						href="/board"
+					<Link
+						to="/board"
 						className="text-emerald-600 font-medium text-sm transition-colors"
 					>
 						掲示板
-					</a>
-					<a
-						href="/dashboard"
+					</Link>
+					<Link
+						to="/dashboard"
 						className="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-all shadow-sm hover:shadow"
 					>
 						デモを見る
-					</a>
+					</Link>
 				</nav>
 			</div>
 		</header>

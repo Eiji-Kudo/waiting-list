@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router";
+import { Link, Outlet, useLocation } from "react-router";
 
 export default function DashboardLayout() {
 	const location = useLocation();
@@ -20,12 +20,14 @@ function DashboardHeader() {
 	return (
 		<header className="bg-white border-b border-slate-200/80">
 			<div className="px-6 py-4 flex items-center justify-between">
-				<a href="/" className="flex items-center gap-2.5">
+				<Link to="/" className="flex items-center gap-2.5">
 					<div className="w-9 h-9 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shadow-sm">
 						<span className="text-white font-bold text-sm">W</span>
 					</div>
-					<span className="font-bold text-xl tracking-tight text-slate-900">WaitLine</span>
-				</a>
+					<span className="font-bold text-xl tracking-tight text-slate-900">
+						WaitLine
+					</span>
+				</Link>
 				<div className="flex items-center gap-4">
 					<span className="text-sm text-slate-500">demo@example.com</span>
 					<button
@@ -66,9 +68,9 @@ function Sidebar({ currentPath }: { currentPath: string }) {
 			</div>
 			<nav className="px-3">
 				{menuItems.map((item) => (
-					<a
+					<Link
 						key={item.id}
-						href={item.href}
+						to={item.href}
 						className={`block px-4 py-2.5 rounded-xl text-sm mb-1 transition-colors ${
 							isActive(item.href)
 								? "bg-emerald-50 text-emerald-700 font-medium"
@@ -76,7 +78,7 @@ function Sidebar({ currentPath }: { currentPath: string }) {
 						}`}
 					>
 						{item.label}
-					</a>
+					</Link>
 				))}
 			</nav>
 		</aside>

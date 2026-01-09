@@ -13,7 +13,11 @@ function formatDateTime(date: Date): string {
 	return `${year}-${month}-${day} ${hours}:${minutes}`;
 }
 
-function getRelativeDate(daysAgo: number, hours: number, minutes: number): Date {
+function getRelativeDate(
+	daysAgo: number,
+	hours: number,
+	minutes: number,
+): Date {
 	const date = new Date();
 	date.setDate(date.getDate() - daysAgo);
 	date.setHours(hours, minutes, 0, 0);
