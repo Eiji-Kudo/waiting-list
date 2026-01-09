@@ -1,159 +1,16 @@
-import type { Route } from "./+types/dashboard";
+import { Outlet, useLocation } from "react-router";
 
-export function meta({}: Route.MetaArgs) {
-	return [{ title: "ダッシュボード - WaitLine" }];
-}
+export default function DashboardLayout() {
+	const location = useLocation();
 
-const mockStats = {
-	totalSubscribers: 234,
-	todaySubscribers: 12,
-	weeklySubscribers: 45,
-	blockRate: 2.1,
-	boardReferrals: 89,
-};
-
-const mockSubscribers = [
-	{
-		id: 1,
-		name: "田中 太郎",
-		registeredAt: "2025-01-09 14:23",
-		source: "掲示板",
-	},
-	{
-		id: 2,
-		name: "山田 花子",
-		registeredAt: "2025-01-09 12:15",
-		source: "掲示板",
-	},
-	{
-		id: 3,
-		name: "佐藤 一郎",
-		registeredAt: "2025-01-08 18:42",
-		source: "直接",
-	},
-	{
-		id: 4,
-		name: "鈴木 美咲",
-		registeredAt: "2025-01-08 10:30",
-		source: "掲示板",
-	},
-	{
-		id: 5,
-		name: "高橋 健二",
-		registeredAt: "2025-01-07 09:15",
-		source: "直接",
-	},
-];
-
-export default function Dashboard() {
 	return (
 		<div className="min-h-screen bg-gray-100">
 			<DashboardHeader />
 			<div className="flex">
-				<Sidebar />
+				<Sidebar currentPath={location.pathname} />
 				<main className="flex-1 p-8">
-					<div className="mb-8">
-						<h1 className="text-2xl font-bold text-gray-900">ダッシュボード</h1>
-						<p className="text-gray-500">AI Writing Assistant</p>
-					</div>
-
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-						<StatCard
-							label="総登録者数"
-							value={mockStats.totalSubscribers}
-							suffix="人"
-						/>
-						<StatCard
-							label="本日の登録"
-							value={mockStats.todaySubscribers}
-							suffix="人"
-							trend="+5"
-						/>
-						<StatCard
-							label="今週の登録"
-							value={mockStats.weeklySubscribers}
-							suffix="人"
-						/>
-						<StatCard
-							label="掲示板からの流入"
-							value={mockStats.boardReferrals}
-							suffix="人"
-						/>
-					</div>
-
-					<div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-						<div className="p-4 border-b border-gray-200 flex items-center justify-between">
-							<h2 className="font-bold text-gray-900">登録者一覧</h2>
-							<button
-								type="button"
-								className="text-sm text-green-600 hover:underline"
-							>
-								CSVエクスポート
-							</button>
-						</div>
-						<table className="w-full">
-							<thead className="bg-gray-50">
-								<tr>
-									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
-										名前
-									</th>
-									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
-										登録日時
-									</th>
-									<th className="px-4 py-3 text-left text-sm font-medium text-gray-500">
-										流入元
-									</th>
-								</tr>
-							</thead>
-							<tbody className="divide-y divide-gray-200">
-								{mockSubscribers.map((subscriber) => (
-									<tr key={subscriber.id} className="hover:bg-gray-50">
-										<td className="px-4 py-3 text-sm text-gray-900">
-											{subscriber.name}
-										</td>
-										<td className="px-4 py-3 text-sm text-gray-500">
-											{subscriber.registeredAt}
-										</td>
-										<td className="px-4 py-3 text-sm">
-											<span
-												className={`px-2 py-1 rounded text-xs ${
-													subscriber.source === "掲示板"
-														? "bg-blue-100 text-blue-700"
-														: "bg-gray-100 text-gray-700"
-												}`}
-											>
-												{subscriber.source}
-											</span>
-										</td>
-									</tr>
-								))}
-							</tbody>
-						</table>
-					</div>
+					<Outlet />
 				</main>
-			</div>
-		</div>
-	);
-}
-
-function StatCard({
-	label,
-	value,
-	suffix,
-	trend,
-}: {
-	label: string;
-	value: number;
-	suffix: string;
-	trend?: string;
-}) {
-	return (
-		<div className="bg-white rounded-xl p-6 border border-gray-200">
-			<div className="text-sm text-gray-500 mb-1">{label}</div>
-			<div className="flex items-end gap-2">
-				<span className="text-3xl font-bold text-gray-900">{value}</span>
-				<span className="text-gray-500 mb-1">{suffix}</span>
-				{trend && <span className="text-green-500 text-sm mb-1">{trend}</span>}
 			</div>
 		</div>
 	);
@@ -183,14 +40,21 @@ function DashboardHeader() {
 	);
 }
 
-function Sidebar() {
+function Sidebar({ currentPath }: { currentPath: string }) {
 	const menuItems = [
-		{ label: "ダッシュボード", href: "/dashboard", active: true },
-		{ label: "登録者一覧", href: "/dashboard/subscribers", active: false },
-		{ label: "メッセージ配信", href: "/dashboard/messages", active: false },
-		{ label: "自動化設定", href: "/dashboard/automation", active: false },
-		{ label: "設定", href: "/dashboard/settings", active: false },
+		{ id: "dashboard", label: "ダッシュボード", href: "/dashboard" },
+		{ id: "subscribers", label: "登録者一覧", href: "/dashboard/subscribers" },
+		{ id: "messages", label: "メッセージ配信", href: "/dashboard/messages" },
+		{ id: "automation", label: "自動化設定", href: "/dashboard/automation" },
+		{ id: "settings", label: "設定", href: "/dashboard/settings" },
 	];
+
+	const isActive = (href: string) => {
+		if (href === "/dashboard") {
+			return currentPath === "/dashboard";
+		}
+		return currentPath.startsWith(href);
+	};
 
 	return (
 		<aside className="w-64 bg-white border-r border-gray-200 min-h-[calc(100vh-65px)]">
@@ -203,10 +67,10 @@ function Sidebar() {
 			<nav className="px-2">
 				{menuItems.map((item) => (
 					<a
-						key={item.label}
+						key={item.id}
 						href={item.href}
 						className={`block px-4 py-2 rounded-lg text-sm mb-1 ${
-							item.active
+							isActive(item.href)
 								? "bg-green-100 text-green-700 font-medium"
 								: "text-gray-600 hover:bg-gray-100"
 						}`}
