@@ -62,7 +62,9 @@ export default function Board() {
 								/>
 							</svg>
 						</div>
-						<p className="text-slate-500 text-sm mb-2">あなたのサービスをここに</p>
+						<p className="text-slate-500 text-sm mb-2">
+							あなたのサービスをここに
+						</p>
 						<p className="text-slate-400 text-xs">
 							WaitLineに登録すると掲載されます
 						</p>
