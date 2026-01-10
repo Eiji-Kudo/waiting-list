@@ -277,14 +277,14 @@ function EmbedOptions() {
 			icon: "🖼️",
 			title: "iframe 埋め込み",
 			description: "どんなサイトにもHTMLタグ1行で埋め込み可能",
-			code: '<iframe src="https://waitline.jp/embed/xxx" />',
+			code: '<iframe src="https://wait-line.com/embed/xxx" />',
 			badge: "HTML / WordPress",
 		},
 		{
 			icon: "🌐",
 			title: "独立LP",
 			description: "WaitLineがホスティングするLP。URLをシェアするだけ",
-			code: "https://waitline.jp/p/your-project",
+			code: "https://wait-line.com/p/your-project",
 			badge: "ホスティング不要",
 		},
 	];
