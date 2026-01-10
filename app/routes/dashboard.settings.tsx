@@ -7,7 +7,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Settings() {
 	return (
 		<>
-			<div className="mb-8">
+			<div className="mb-6 md:mb-8">
 				<h1 className="text-2xl font-bold text-slate-900 tracking-tight">
 					設定
 				</h1>
@@ -15,7 +15,7 @@ export default function Settings() {
 			</div>
 
 			<div className="space-y-6">
-				<div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
+				<div className="bg-white rounded-2xl border border-slate-200/80 p-4 md:p-6 shadow-sm">
 					<h2 className="font-semibold text-slate-900 mb-4">
 						サービス基本情報
 					</h2>
@@ -76,7 +76,7 @@ export default function Settings() {
 					</div>
 				</div>
 
-				<div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
+				<div className="bg-white rounded-2xl border border-slate-200/80 p-4 md:p-6 shadow-sm">
 					<h2 className="font-semibold text-slate-900 mb-4">
 						LINE公式アカウント連携
 					</h2>
@@ -112,15 +112,15 @@ export default function Settings() {
 							/>
 						</label>
 						<div className="text-sm text-slate-500">
-							Webhook URL:{" "}
-							<code className="bg-slate-100 px-2.5 py-1 rounded-lg text-slate-700">
+							<span className="block sm:inline">Webhook URL:</span>{" "}
+							<code className="bg-slate-100 px-2.5 py-1 rounded-lg text-slate-700 text-xs sm:text-sm break-all">
 								https://waitline.app/api/webhook/xxx
 							</code>
 						</div>
 					</div>
 				</div>
 
-				<div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
+				<div className="bg-white rounded-2xl border border-slate-200/80 p-4 md:p-6 shadow-sm">
 					<h2 className="font-semibold text-slate-900 mb-4">公開設定</h2>
 					<div className="space-y-4">
 						<label className="flex items-center gap-3 cursor-pointer">
@@ -152,7 +152,7 @@ export default function Settings() {
 					</div>
 				</div>
 
-				<div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
+				<div className="bg-white rounded-2xl border border-slate-200/80 p-4 md:p-6 shadow-sm">
 					<h2 className="font-semibold text-slate-900 mb-4">
 						ウェルカムメッセージ
 					</h2>
@@ -170,7 +170,7 @@ export default function Settings() {
 				<div className="flex justify-end">
 					<button
 						type="button"
-						className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-xl font-medium text-sm transition-all shadow-sm hover:shadow"
+						className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-xl font-medium text-sm transition-all shadow-sm hover:shadow w-full sm:w-auto"
 					>
 						保存
 					</button>

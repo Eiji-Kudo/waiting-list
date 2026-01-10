@@ -87,8 +87,8 @@ export default function DashboardIndex() {
 				<p className="text-slate-500">AI Writing Assistant</p>
 			</div>
 
-			<div className="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-2xl p-6 mb-8 text-white shadow-lg">
-				<div className="flex items-start justify-between">
+			<div className="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-2xl p-5 md:p-6 mb-6 md:mb-8 text-white shadow-lg">
+				<div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
 					<div>
 						<h2 className="font-semibold text-lg mb-2">
 							ウェイティングリストを設置しよう
@@ -119,14 +119,14 @@ export default function DashboardIndex() {
 					</div>
 					<button
 						type="button"
-						className="bg-white text-emerald-600 px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-emerald-50 transition-all shadow-sm"
+						className="bg-white text-emerald-600 px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-emerald-50 transition-all shadow-sm w-full md:w-auto shrink-0"
 					>
 						埋め込みコードを取得
 					</button>
 				</div>
 			</div>
 
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+			<div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-6 md:mb-8">
 				<StatCard
 					label="総登録者数"
 					value={mockStats.totalSubscribers}
@@ -151,7 +151,7 @@ export default function DashboardIndex() {
 			</div>
 
 			<div className="bg-white rounded-2xl border border-slate-200/80 overflow-hidden shadow-sm">
-				<div className="p-5 border-b border-slate-100 flex items-center justify-between">
+				<div className="p-4 md:p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
 					<h2 className="font-semibold text-slate-900">登録者一覧</h2>
 					<button
 						type="button"
@@ -160,43 +160,45 @@ export default function DashboardIndex() {
 						CSVエクスポート
 					</button>
 				</div>
-				<table className="w-full">
-					<thead className="bg-slate-50/80">
-						<tr>
-							<th className="px-5 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
-								名前
-							</th>
-							<th className="px-5 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
-								登録日時
-							</th>
-							<th className="px-5 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
-								流入元
-							</th>
-						</tr>
-					</thead>
-					<tbody className="divide-y divide-slate-100">
-						{mockSubscribers.map((subscriber) => (
-							<tr
-								key={subscriber.id}
-								className="hover:bg-slate-50/50 transition-colors"
-							>
-								<td className="px-5 py-4 text-sm text-slate-900">
-									{subscriber.name}
-								</td>
-								<td className="px-5 py-4 text-sm text-slate-500">
-									{subscriber.registeredAt}
-								</td>
-								<td className="px-5 py-4 text-sm">
-									<span
-										className={`px-2.5 py-1 rounded-lg text-xs font-medium ${sourceStyles[subscriber.source] || "bg-slate-100 text-slate-600"}`}
-									>
-										{subscriber.source}
-									</span>
-								</td>
+				<div className="overflow-x-auto">
+					<table className="w-full min-w-[500px]">
+						<thead className="bg-slate-50/80">
+							<tr>
+								<th className="px-5 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+									名前
+								</th>
+								<th className="px-5 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+									登録日時
+								</th>
+								<th className="px-5 py-3 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">
+									流入元
+								</th>
 							</tr>
-						))}
-					</tbody>
-				</table>
+						</thead>
+						<tbody className="divide-y divide-slate-100">
+							{mockSubscribers.map((subscriber) => (
+								<tr
+									key={subscriber.id}
+									className="hover:bg-slate-50/50 transition-colors"
+								>
+									<td className="px-5 py-4 text-sm text-slate-900">
+										{subscriber.name}
+									</td>
+									<td className="px-5 py-4 text-sm text-slate-500">
+										{subscriber.registeredAt}
+									</td>
+									<td className="px-5 py-4 text-sm">
+										<span
+											className={`px-2.5 py-1 rounded-lg text-xs font-medium ${sourceStyles[subscriber.source] || "bg-slate-100 text-slate-600"}`}
+										>
+											{subscriber.source}
+										</span>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</>
 	);
@@ -214,15 +216,19 @@ function StatCard({
 	trend?: string;
 }) {
 	return (
-		<div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm">
-			<div className="text-sm text-slate-500 mb-2">{label}</div>
-			<div className="flex items-end gap-2">
-				<span className="text-3xl font-bold text-slate-900 tracking-tight">
+		<div className="bg-white rounded-2xl p-4 md:p-6 border border-slate-200/80 shadow-sm">
+			<div className="text-xs md:text-sm text-slate-500 mb-1 md:mb-2">
+				{label}
+			</div>
+			<div className="flex items-end gap-1 md:gap-2">
+				<span className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
 					{value}
 				</span>
-				<span className="text-slate-500 mb-1">{suffix}</span>
+				<span className="text-slate-500 text-sm md:text-base mb-0.5 md:mb-1">
+					{suffix}
+				</span>
 				{trend && (
-					<span className="text-emerald-600 text-sm font-medium mb-1">
+					<span className="text-emerald-600 text-xs md:text-sm font-medium mb-0.5 md:mb-1">
 						{trend}
 					</span>
 				)}

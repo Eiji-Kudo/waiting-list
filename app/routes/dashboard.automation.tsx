@@ -86,15 +86,15 @@ export default function Automation() {
 
 	return (
 		<>
-			<div className="mb-8">
+			<div className="mb-6 md:mb-8">
 				<h1 className="text-2xl font-bold text-slate-900 tracking-tight">
 					自動化設定
 				</h1>
 				<p className="text-slate-500">ステップ配信・条件トリガーを設定</p>
 			</div>
 
-			<div className="bg-white rounded-2xl border border-slate-200/80 p-6 mb-6 shadow-sm">
-				<div className="flex items-center justify-between mb-6">
+			<div className="bg-white rounded-2xl border border-slate-200/80 p-4 md:p-6 mb-6 shadow-sm">
+				<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
 					<div>
 						<h2 className="font-semibold text-slate-900 text-lg">
 							ステップ配信
@@ -105,7 +105,7 @@ export default function Automation() {
 					</div>
 					<button
 						type="button"
-						className="text-sm bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-lg font-medium transition-all shadow-sm"
+						className="text-sm bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-lg font-medium transition-all shadow-sm w-full sm:w-auto shrink-0"
 					>
 						+ ステップを追加
 					</button>
@@ -168,8 +168,8 @@ export default function Automation() {
 				</div>
 			</div>
 
-			<div className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-sm">
-				<div className="flex items-center justify-between mb-6">
+			<div className="bg-white rounded-2xl border border-slate-200/80 p-4 md:p-6 shadow-sm">
+				<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
 					<div>
 						<h2 className="font-semibold text-slate-900 text-lg">
 							条件トリガー配信
@@ -180,7 +180,7 @@ export default function Automation() {
 					</div>
 					<button
 						type="button"
-						className="text-sm bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-lg font-medium transition-all shadow-sm"
+						className="text-sm bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-lg font-medium transition-all shadow-sm w-full sm:w-auto shrink-0"
 					>
 						+ トリガーを追加
 					</button>
