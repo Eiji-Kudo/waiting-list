@@ -63,22 +63,42 @@ export function WaitlistForm({ variant = "light" }: Props) {
 	if (mutation.isSuccess) {
 		return (
 			<div
-				className={`rounded-xl sm:rounded-2xl p-5 sm:p-8 text-center ${
+				className={`rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center ${
 					isDark
-						? "bg-white/20 backdrop-blur border border-white/30"
-						: "bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200"
+						? "bg-white/10 backdrop-blur-md border border-white/20"
+						: "bg-white border border-slate-200 shadow-lg"
 				}`}
 			>
-				<div className="text-3xl sm:text-4xl mb-2 sm:mb-3">🎉</div>
-				<p
-					className={`text-lg sm:text-xl font-bold mb-1 sm:mb-2 ${isDark ? "text-white" : "text-green-800"}`}
+				<div
+					className={`w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
+						isDark
+							? "bg-emerald-500/20 border border-emerald-400/30"
+							: "bg-gradient-to-br from-emerald-500 to-emerald-600 shadow-lg shadow-emerald-500/25"
+					}`}
 				>
-					登録完了！
+					<svg
+						className={`w-7 h-7 sm:w-8 sm:h-8 ${isDark ? "text-emerald-400" : "text-white"}`}
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+						strokeWidth={2.5}
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							d="M5 13l4 4L19 7"
+						/>
+					</svg>
+				</div>
+				<p
+					className={`text-lg sm:text-xl font-bold mb-2 tracking-tight ${isDark ? "text-white" : "text-slate-900"}`}
+				>
+					登録が完了しました
 				</p>
 				<p
-					className={`text-sm sm:text-base ${isDark ? "text-white/80" : "text-green-600"}`}
+					className={`text-sm sm:text-base leading-relaxed ${isDark ? "text-white/70" : "text-slate-500"}`}
 				>
-					リリース時にお知らせします。お楽しみに！
+					リリース時にご連絡いたします
 				</p>
 			</div>
 		);
